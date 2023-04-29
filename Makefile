@@ -36,5 +36,9 @@ test:
 testMacro:
 	qemu-system-x86_64 -fda ./img/protectedModeMacro.img
 
+debug:
+	gnome-terminal --title=qemu -- qemu-system-i386 -fda ./img/protectedMode.img -boot a -s -S -monitor stdio
+	gnome-terminal --title=gdb -- gdb --eval-command="target remote localhost:1234"
+
 clean:
 	rm -rf $(img)/ $(out)/ $(elf)/
